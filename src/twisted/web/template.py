@@ -545,6 +545,7 @@ def renderElement(request, element,
         request.write(b'\n')
 
     if _failElement is None:
+        import twisted.web.util
         _failElement = twisted.web.util.FailureElement
 
     d = flatten(request, element, request.write)
@@ -572,4 +573,3 @@ def renderElement(request, element,
 
 from twisted.web._element import Element, renderer
 from twisted.web._flatten import flatten, flattenString
-import twisted.web.util
