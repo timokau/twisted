@@ -8,7 +8,12 @@ from zope.interface import implementer
 from twisted.internet import defer
 from twisted.python.compat import unicode
 from twisted.trial import unittest
-from twisted.words.protocols.jabber import sasl, sasl_mechanisms, xmlstream, jid
+from twisted.words.protocols.jabber import (
+    jid,
+    sasl,
+    sasl_mechanisms,
+    xmlstream,
+)
 from twisted.words.xish import domish
 
 NS_XMPP_SASL = 'urn:ietf:params:xml:ns:xmpp-sasl'

@@ -7,18 +7,21 @@ Test cases for Ltwisted.mail.pop3} module.
 
 from __future__ import print_function
 
-import hmac
 import base64
+import hmac
 import itertools
-
 from collections import OrderedDict
 from io import BytesIO
 
 from zope.interface import implementer
 
-from twisted import cred
-from twisted import internet
-from twisted import mail
+import twisted.cred.checkers
+import twisted.cred.credentials
+import twisted.cred.portal
+import twisted.internet.protocol
+import twisted.mail.pop3
+import twisted.mail.protocols
+from twisted import cred, internet, mail
 from twisted.internet import defer
 from twisted.mail import pop3
 from twisted.protocols import loopback
@@ -26,12 +29,6 @@ from twisted.python import failure
 from twisted.python.compat import intToBytes
 from twisted.test.proto_helpers import LineSendingProtocol
 from twisted.trial import unittest, util
-import twisted.cred.checkers
-import twisted.cred.credentials
-import twisted.cred.portal
-import twisted.internet.protocol
-import twisted.mail.pop3
-import twisted.mail.protocols
 
 
 class UtilityTests(unittest.TestCase):

@@ -7,14 +7,26 @@ Tests for L{twisted.test.proto_helpers}.
 
 from zope.interface.verify import verifyObject
 
-from twisted.internet.interfaces import (ITransport, IPushProducer, IConsumer,
-    IReactorTCP, IReactorSSL, IReactorUNIX, IAddress, IListeningPort,
-    IConnector)
 from twisted.internet.address import IPv4Address
-from twisted.trial.unittest import TestCase
-from twisted.test.proto_helpers import (StringTransport, MemoryReactor,
-    RaisingMemoryReactor, NonStreamingProducer)
+from twisted.internet.interfaces import (
+    IAddress,
+    IConnector,
+    IConsumer,
+    IListeningPort,
+    IPushProducer,
+    IReactorSSL,
+    IReactorTCP,
+    IReactorUNIX,
+    ITransport,
+)
 from twisted.internet.protocol import ClientFactory, Factory
+from twisted.test.proto_helpers import (
+    MemoryReactor,
+    NonStreamingProducer,
+    RaisingMemoryReactor,
+    StringTransport,
+)
+from twisted.trial.unittest import TestCase
 
 
 class StringTransportTests(TestCase):

@@ -5,26 +5,28 @@
 Tests for L{twisted.application.runner._runner}.
 """
 
-from signal import SIGTERM
-from io import BytesIO
 import errno
+from io import BytesIO
+from signal import SIGTERM
 
-from attr import attrib, attrs, Factory
+from attr import Factory, attrib, attrs
 
+import twisted.trial.unittest
 from twisted.logger import (
-    LogLevel, LogPublisher, LogBeginner,
-    FileLogObserver, FilteringLogObserver, LogLevelFilterPredicate,
+    FileLogObserver,
+    FilteringLogObserver,
+    LogBeginner,
+    LogLevel,
+    LogLevelFilterPredicate,
+    LogPublisher,
 )
 from twisted.test.proto_helpers import MemoryReactor
 
 from ...runner import _runner
 from .._exit import ExitStatus
-from .._pidfile import PIDFile, NonePIDFile
+from .._pidfile import NonePIDFile, PIDFile
 from .._runner import Runner
 from .test_pidfile import DummyFilePath
-
-import twisted.trial.unittest
-
 
 
 class RunnerTests(twisted.trial.unittest.TestCase):

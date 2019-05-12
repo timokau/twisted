@@ -8,21 +8,25 @@ Things likely to be used by writers of unit tests.
 Maintainer: Jonathan Lange
 """
 
-from __future__ import division, absolute_import
+from __future__ import absolute_import, division
 
 import inspect
-import os, warnings, sys, tempfile, types
+import os
+import sys
+import tempfile
+import types
+import unittest as pyunit
+import warnings
 from dis import findlinestarts as _findlinestarts
 
 from twisted.python import failure, log, monkey
+from twisted.python.deprecate import (
+    getDeprecationWarningString,
+    warnAboutFunction,
+)
 from twisted.python.reflect import fullyQualifiedName
 from twisted.python.util import runWithWarningsSuppressed
-from twisted.python.deprecate import (
-    getDeprecationWarningString, warnAboutFunction)
-
 from twisted.trial import itrial, util
-
-import unittest as pyunit
 
 # Python 2.7 and higher has skip support built-in
 SkipTest = pyunit.SkipTest

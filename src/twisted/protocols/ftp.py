@@ -6,29 +6,31 @@
 An FTP protocol implementation
 """
 
-# System Imports
-import os
-import time
-import re
-import stat
 import errno
 import fnmatch
+# System Imports
+import os
+import re
+import stat
+import time
+
+from zope.interface import Interface, implementer
+
+# Twisted Imports
+from twisted import copyright
+from twisted.cred import checkers, credentials, error as cred_error, portal
+from twisted.internet import defer, error, interfaces, protocol, reactor
+from twisted.protocols import basic, policies
+from twisted.python import failure, filepath, log
+from twisted.python.compat import range, unicode
 
 try:
     import pwd, grp
 except ImportError:
     pwd = grp = None
 
-from zope.interface import Interface, implementer
 
-# Twisted Imports
-from twisted import copyright
-from twisted.internet import reactor, interfaces, protocol, error, defer
-from twisted.protocols import basic, policies
 
-from twisted.python import log, failure, filepath
-from twisted.python.compat import range, unicode
-from twisted.cred import error as cred_error, portal, credentials, checkers
 
 # constants
 # response codes

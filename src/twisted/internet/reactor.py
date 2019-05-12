@@ -31,9 +31,11 @@ this is not currently possible.
 @see: L{IReactorPluggableResolver<twisted.internet.interfaces.IReactorPluggableResolver>}
 """
 
-from __future__ import division, absolute_import
+from __future__ import absolute_import, division
 
 import sys
-del sys.modules['twisted.internet.reactor']
+
 from twisted.internet import default
+
+del sys.modules['twisted.internet.reactor']
 default.install()

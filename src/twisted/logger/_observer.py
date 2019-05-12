@@ -9,9 +9,8 @@ Basic log observers.
 from zope.interface import Interface, implementer
 
 from twisted.python.failure import Failure
+
 from ._logger import Logger
-
-
 
 OBSERVER_DISABLED = (
     "Temporarily disabling observer {observer} due to exception: {log_failure}"

@@ -5,17 +5,22 @@
 Address objects for network connections.
 """
 
-from __future__ import division, absolute_import
+from __future__ import absolute_import, division
 
-import attr
-import warnings, os
+import os
+import warnings
 
 from zope.interface import implementer
+
+import attr
+
 from twisted.internet.interfaces import IAddress
-from twisted.python.filepath import _asFilesystemBytes
-from twisted.python.filepath import _coerceToFilesystemEncoding
-from twisted.python.runtime import platform
 from twisted.python.compat import _PY3
+from twisted.python.filepath import (
+    _asFilesystemBytes,
+    _coerceToFilesystemEncoding,
+)
+from twisted.python.runtime import platform
 
 
 @implementer(IAddress)

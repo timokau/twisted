@@ -14,14 +14,13 @@ from __future__ import absolute_import, division
 import struct
 
 from twisted.conch import error, interfaces
-from twisted.conch.ssh import keys, transport, service
+from twisted.conch.ssh import keys, service, transport
 from twisted.conch.ssh.common import NS, getNS
 from twisted.cred import credentials
 from twisted.cred.error import UnauthorizedLogin
 from twisted.internet import defer, reactor
 from twisted.python import failure, log
-from twisted.python.compat import nativeString, _bytesChr as chr
-
+from twisted.python.compat import _bytesChr as chr, nativeString
 
 
 class SSHUserAuthServer(service.SSHService):

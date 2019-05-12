@@ -7,34 +7,45 @@ Test HTTP support.
 
 from __future__ import absolute_import, division
 
-import random, cgi, base64, calendar
-
-try:
-    from urlparse import urlparse, urlunsplit, clear_cache
-except ImportError:
-    from urllib.parse import urlparse, urlunsplit, clear_cache
-
+import base64
+import calendar
+import cgi
+import random
 from io import BytesIO
 from itertools import cycle
-from zope.interface import provider
+
+from zope.interface import directlyProvides, providedBy, provider
 from zope.interface.verify import verifyObject
 
-from twisted.python.compat import (_PY3, iterbytes, long, networkString,
-                                   unicode, intToBytes)
+from twisted.internet import address
+from twisted.internet.error import ConnectionDone, ConnectionLost
+from twisted.internet.task import Clock
+from twisted.logger import globalLogPublisher
+from twisted.protocols import loopback
+from twisted.python.compat import (
+    _PY3,
+    intToBytes,
+    iterbytes,
+    long,
+    networkString,
+    unicode,
+)
 from twisted.python.components import proxyForInterface
 from twisted.python.failure import Failure
+from twisted.test.proto_helpers import (
+    EventLoggingObserver,
+    NonStreamingProducer,
+    StringTransport,
+)
+from twisted.test.test_internet import DummyProducer
 from twisted.trial import unittest
 from twisted.trial.unittest import TestCase
 from twisted.web import http, http_headers, iweb
-from twisted.web.http import PotentialDataLoss, _DataLoss
-from twisted.web.http import _IdentityTransferDecoder
-from twisted.internet import address
-from twisted.internet.task import Clock
-from twisted.internet.error import ConnectionLost, ConnectionDone
-from twisted.protocols import loopback
-from twisted.test.proto_helpers import (StringTransport, NonStreamingProducer,
-                                        EventLoggingObserver)
-from twisted.test.test_internet import DummyProducer
+from twisted.web.http import (
+    PotentialDataLoss,
+    _DataLoss,
+    _IdentityTransferDecoder,
+)
 from twisted.web.test.requesthelper import (
     DummyChannel,
     bytesLinearWhitespaceComponents,
@@ -42,8 +53,13 @@ from twisted.web.test.requesthelper import (
     textLinearWhitespaceComponents,
 )
 
-from zope.interface import directlyProvides, providedBy
-from twisted.logger import globalLogPublisher
+try:
+    from urlparse import urlparse, urlunsplit, clear_cache
+except ImportError:
+    from urllib.parse import urlparse, urlunsplit, clear_cache
+
+
+
 
 
 

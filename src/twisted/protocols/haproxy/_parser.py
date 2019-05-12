@@ -7,11 +7,13 @@ Parser for 'haproxy:' string endpoint.
 """
 
 from zope.interface import implementer
-from twisted.plugin import IPlugin
 
 from twisted.internet.endpoints import (
-    quoteStringArgument, serverFromString, IStreamServerEndpointStringParser
+    IStreamServerEndpointStringParser,
+    quoteStringArgument,
+    serverFromString,
 )
+from twisted.plugin import IPlugin
 from twisted.python.compat import iteritems
 
 from . import proxyEndpoint

@@ -26,6 +26,7 @@ from __future__ import absolute_import, division
 
 from binascii import hexlify
 from hashlib import sha1
+
 from zope.interface import directlyProvides, implementer
 
 from twisted.internet import defer, protocol
@@ -34,10 +35,12 @@ from twisted.python import failure, log, randbytes
 from twisted.python.compat import intern, iteritems, itervalues, unicode
 from twisted.words.protocols.jabber import error, ijabber, jid
 from twisted.words.xish import domish, xmlstream
-from twisted.words.xish.xmlstream import STREAM_CONNECTED_EVENT
-from twisted.words.xish.xmlstream import STREAM_START_EVENT
-from twisted.words.xish.xmlstream import STREAM_END_EVENT
-from twisted.words.xish.xmlstream import STREAM_ERROR_EVENT
+from twisted.words.xish.xmlstream import (
+    STREAM_CONNECTED_EVENT,
+    STREAM_END_EVENT,
+    STREAM_ERROR_EVENT,
+    STREAM_START_EVENT,
+)
 
 try:
     from twisted.internet import ssl

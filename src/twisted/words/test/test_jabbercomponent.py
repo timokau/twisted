@@ -16,6 +16,7 @@ from twisted.words.protocols.jabber.jid import JID
 from twisted.words.xish import domish
 from twisted.words.xish.utility import XmlPipe
 
+
 class DummyTransport:
     def __init__(self, list):
         self.list = list

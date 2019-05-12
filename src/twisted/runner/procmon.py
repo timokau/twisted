@@ -8,10 +8,11 @@ Support for starting, monitoring, and restarting child process.
 import attr
 import incremental
 
-from twisted.python import log, deprecate
-from twisted.internet import error, protocol, reactor as _reactor
 from twisted.application import service
+from twisted.internet import error, protocol, reactor as _reactor
 from twisted.protocols import basic
+from twisted.python import deprecate, log
+
 
 @attr.s(frozen=True)
 class _Process(object):
